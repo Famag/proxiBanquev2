@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<package name="default" namespace="/" extends="struts-default">
+		<default-action-ref name="index"></default-action-ref>
+		<action name="index">
+			<result>jsp/login.jsp</result>
+		</action>
+		<action name="client" class="sn.objis.proxiBanquev2.action.ClientAction" method="doList" >
+	    <result name="success">jsp/client.jsp</result>
+		</action>
+		<action name="save" class="sn.objis.proxiBanquev2.action.ClientAction"
+			method="save">
+			<result name="success">jsp/client.jsp</result>
+		</action>
+		<action name="edit" class="sn.objis.proxiBanquev2.action.ClientAction"
+			method="edit">
+			<result name="success">jsp/client.jsp</result>
+		</action>
+		<action name="update" class="sn.objis.proxiBanquev2.action.ClientAction"
+			method="update">
+			<result name="success">jsp/client.jsp</result>
+		</action>
+		<action name="listecpte" class="sn.objis.proxiBanquev2.action.ClientAction"
+			method="comptes">
+			<result name="success">jsp/compte.jsp</result>
+		</action>
+
+		
+		<!-- Actions Login/Logout -->
+		<action name="login"
+			class="sn.objis.proxiBanquev2.action.ClientAction" method="doLogin">
+			<result name="input">/jsp/login.jsp</result>
+			<result name="success" type="redirectAction">client</result>
+		</action>
+		<action name="logout"
+			class="sn.objis.proxiBanquev2.action.ClientAction" method="doLogout">
+			<result type="redirectAction">index</result>
+		</action>
+	    <action name="operation" class="sn.objis.proxiBanquev2.action.ClientAction" method="consulter">
+			<result name="success">jsp/operation.jsp</result>			
+		</action>
+		    <action name="saveoperation" class="sn.objis.proxiBanquev2.action.ClientAction" method="saveoperation">
+			<result name="input">jsp/operation.jsp</result>		
+			<result name="success">jsp/operation.jsp</result>				
+		</action>
+		
+		<action name="getSubForm" class="sn.objis.proxiBanquev2.action.ClientAction" method="getSubForm">
+        <result name="success">jsp/SubForm.jsp</result>
+      </action>
+	</package>	
+
+	
+</struts>
